@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "5f52c417-9c74-4c8e-9887-b72d0d908746",
+		"name": "BITPractice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RBCClientTest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a3a55a7b-b66f-40c0-a451-3daa3a814452",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(\"\\nMax rate for the last month: \\n64.3608\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/rbc-server",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rbc-server"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WeatherClientTest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9df05252-2925-4a55-94ef-f032ffb8ec5b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Current temperature :\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/weather-server",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"weather-server"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PredictionClientTest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b77c820-5c24-403a-8c02-e8d3b9b20328",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Predicted value is :\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/pred-server",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pred-server"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
